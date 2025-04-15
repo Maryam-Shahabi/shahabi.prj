@@ -1,0 +1,236 @@
+{%extends "main_app/layout.html"%}
+{%load static%}
+
+
+{%block 'zirmenu'%}
+<div class="container pr-1">
+    <ul class="breadcrumb bg-white mt-4">
+        <li class="breadcrumb-item"><a href="#" class="font-12 vazir">صفحه اصلی</a></li>
+        <li class="breadcrumb-item"><a href="#" class="pr-2 font-12 vazir"> دوره های آموزشی</a></li>
+    </ul>
+</div>
+{%endblock%}  
+
+{%block 'vasat'%}
+<div class="container">
+    <div class="row my-4">
+
+        <div class="col-md-3 ">
+
+            <div class="row">
+                <div class="col-md-12 bg-white shadow-sm mb-3">
+                    <p class="font-13 mt-3">نوع دوره </p>
+                    <hr>
+
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">رایگان
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">فقط نقدی
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">نقدی و اعضای ویژه
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 bg-white shadow-sm mb-3">
+                    <p class="font-13 mt-3">مرتب سازی براساس </p>
+                    <hr>
+
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input custom-checkbox" value="" name="sort">جدیدترین
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input custom-checkbox" value=""  name="sort">قدیمی ترین
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input custom-checkbox" value=""  name="sort">درحال برگزاری
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input custom-checkbox" value=""  name="sort">تکمیل شده ها
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"><!----- Start course title ----->
+                <div class="col-md-12 bg-white shadow-sm">
+                    <p class="font-13 mt-3">سرفصل ها </p>
+                    <hr>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">صفر تا صد ریاضی دهم
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">صفر تا صد ریاضی یازدهم تجربی
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">صفر تا صد هندسه یک دهم
+                        </label>
+                    </div>
+    
+                    <div class="form-check mb-2">
+                        <label class="form-check-label">
+                          <input type="checkbox" class="form-check-input custom-checkbox" value="">صفر تا صد هندسه دو یازدهم
+                        </label>
+                    </div>
+                </div>
+            </div><!----- End course title ----->
+
+        </div>
+
+        <div class="col-md-9">
+            <div class="row">
+                
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card custom-card mb-3">
+                        <div class="sub-layer">
+                            <img src="{%static 'main_app/'%}images/riazi1.jpg" alt="bootstrap" class="img-fluid card-img-top">
+                            <div class="over-layer">
+                                <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                                <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="/course" class="card-link">صفر تا صد ریاضی دهم</a>
+                            <p class="text-justify card-text vazir font-14 mt-3">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                                روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge badge-primary badge-pill pt-1">60%</span>
+                            <div class="float-left">
+                                <del class="text-muted font-13">120.000 تومان</del>
+                                <small class="text-success mr-2">75.000 تومان</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card custom-card mb-3">
+                        <div class="sub-layer">
+                            <img src="{%static 'main_app/'%}images/riazi2.jpg" alt="VUE X" class="img-fluid card-img-top">
+                            <div class="over-layer">
+                                <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                                <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="/course" class="card-link">صفر تا صد ریاضی یازدهم تجربی</a>
+                            <p class="text-justify card-text vazir font-14 mt-3">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                                روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge badge-primary badge-pill pt-1">60%</span>
+                            <div class="float-left">
+                                <del class="text-muted font-13">120.000 تومان</del>
+                                <small class="text-success mr-2">75.000 تومان</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card custom-card mb-3">
+                        <div class="sub-layer">
+                            <img src="{%static 'main_app/'%}images/hendese1.jpg" alt="HTML" class="img-fluid card-img-top">
+                            <div class="over-layer">
+                                <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                                <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="/course" class="card-link">صفر تا صد هندسه یک دهم</a>
+                            <p class="text-justify card-text vazir font-14 mt-3">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                                روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge badge-primary badge-pill pt-1">60%</span>
+                            <div class="float-left">
+                                <del class="text-muted font-13">120.000 تومان</del>
+                                <small class="text-success mr-2">75.000 تومان</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="card custom-card mb-3">
+                        <div class="sub-layer">
+                            <img src="{%static 'main_app/'%}images/hendese2.jpg" alt="React Native" class="img-fluid card-img-top">
+                            <div class="over-layer">
+                                <a href="#" class="btn btn-primary"> مشاهده و خرید </a>
+                                <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <a href="/course" class="card-link">صفر تا صد هندسه دو یازدهم </a>
+                            <p class="text-justify card-text vazir font-14 mt-3">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                                استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                                روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge badge-primary badge-pill pt-1">60%</span>
+                            <div class="float-left">
+                                <del class="text-muted font-13">120.000 تومان</del>
+                                <small class="text-success mr-2">75.000 تومان</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<ul class="pagination  justify-content-center mb-5">
+    <li class="page-item"><a href="#" class="page-link">&lsaquo;</a></li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item active"><a href="#" class="page-link">2</a></li>
+    <li class="page-item"><a href="#" class="page-link">3</a></li>
+    <li class="page-item"><a href="#" class="page-link">4</a></li>
+    <li class="page-item"><a href="#" class="page-link">&rsaquo;</a></li>
+</ul>
+{%endblock%}

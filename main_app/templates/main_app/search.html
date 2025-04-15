@@ -1,0 +1,109 @@
+{%extends "main_app/layout.html"%}
+{%load static%}
+
+{%block 'zirmenu'%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <p class="text-center font-14 mt-3">برای عنوان جستجو شده 3 نتیجه یافت شد</p>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}   
+
+{%block 'vasat'%}
+<!----- Start course boxes ----->
+<div class="container my-3">
+    <div class="row">
+
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card custom-card mb-3">
+                <div class="sub-layer">
+                    <img src="{%static 'main_app/'%}images/riazi1.jpg" alt="Math" class="img-fluid card-img-top">
+                    <div class="over-layer">
+                        <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                        <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a href="/course" class="card-link"> صفر تا صد ریاضی دهم </a>
+                    <p class="text-justify card-text vazir font-14 mt-3">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                        روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge badge-primary badge-pill pt-1">60%</span>
+                    <div class="float-left">
+                        <del class="text-muted font-13">120.000 تومان</del>
+                        <small class="text-success mr-2">75.000 تومان</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card custom-card mb-3">
+                <div class="sub-layer">
+                    <img src="{%static 'main_app/'%}images/riazi2.jpg" alt="Math" class="img-fluid card-img-top">
+                    <div class="over-layer">
+                        <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                        <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a href="/course" class="card-link"> صفر تا صد ریاضی یازدهم تجربی </a>
+                    <p class="text-justify card-text vazir font-14 mt-3">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                        روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge badge-primary badge-pill pt-1">60%</span>
+                    <div class="float-left">
+                        <del class="text-muted font-13">120.000 تومان</del>
+                        <small class="text-success mr-2">75.000 تومان</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card custom-card mb-3">
+                <div class="sub-layer">
+                    <img src="{%static 'main_app/'%}images/hendese1.jpg" alt="Geometry" class="img-fluid card-img-top">
+                    <div class="over-layer">
+                        <a href="/course" class="btn btn-primary"> مشاهده و خرید </a>
+                        <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a href="/course" class="card-link"> صفر تا صد هندسه یک دهم</a>
+                    <p class="text-justify card-text vazir font-14 mt-3">
+                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+                        استفاده از طراحان گرافیک است. چاپگرها و متون بلکه 
+                        روزنامه و مجله در ستون و سطرآنچنان که لازم است. 
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge badge-primary badge-pill pt-1">60%</span>
+                    <div class="float-left">
+                        <del class="text-muted font-13">120.000 تومان</del>
+                        <small class="text-success mr-2">75.000 تومان</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+    </div>
+</div>
+<!----- End course boxes ----->
+{%endblock%}
