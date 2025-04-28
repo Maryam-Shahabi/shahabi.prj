@@ -128,7 +128,7 @@
 
                         <div class="dropdown-menu custom-dropdown-menu dropdown-menu-right font-13 text-right">
                             {%for item in c%}
-                            <a href="/course/{{item.id}}" class="dropdown-item border-bottom py-2">{{item.course_title}}</a>
+                            <a href="/course/{{item.id}}" class="dropdown-item border-bottom py-2">{{item.title}}</a>
                             {%endfor%}
                         </div>
 
@@ -219,30 +219,30 @@
         </div>
     </div>
 
-    <!----- Start course boxes ----->
+    <!----- Start Book boxes ----->
     <div class="container my-3">
         <div class="row">
             {% for item in c%}
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card custom-card mb-3">
                     <div class="sub-layer">
-                        <img src="{{item.course_img.url}}" alt="Math" class="img-fluid card-img-top">
+                        <img src="{{item.Book_img.url}}" alt="Math" class="img-fluid card-img-top">
                         <div class="over-layer">
-                            <a href="/course/{{item.id}}" class="btn btn-primary">مشاهده و خرید </a>
+                            <a href="/Book/{{item.id}}" class="btn btn-primary">مشاهده و خرید </a>
                             <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href="/course/{{item.id}}" class="card-link"> {{item.course_title}}</a>
+                        <a href="/Book/{{item.id}}" class="card-link"> {{item.Book_title}}</a>
                         <p class="text-justify card-text vazir font-14 mt-3">
-                        {{item.course_descreption}} 
+                        {{item.Book_descreption}} 
                         </p>
                     </div>
                     <div class="card-footer">
                         <span class="badge badge-primary badge-pill pt-1">60%</span>
                         <div class="float-left">
-                            <del class="text-muted font-13">{{item.course_price}} تومان</del>
-                            <small class="text-success mr-2">{{item.course_discount_price}} تومان</small>
+                            <del class="text-muted font-13">{{item.Book_price}} تومان</del>
+                            <small class="text-success mr-2">{{item.Book_discount_price}} تومان</small>
                         </div>
                     </div>
                 </div>
@@ -250,7 +250,7 @@
             {%endfor%}
         </div>
     </div>
-    <!----- End course boxes ----->
+    <!----- End Book boxes ----->
 
     <div class="container">
         <div class="row">
@@ -271,26 +271,26 @@
             <div class="col-lg-6">
 
                 <div class="events">
-                    <a href="/course" class="d-block mb-3 font-14 text-info">آموزش فصل به فصل حسابان یک </a>
+                    <a href="/Book" class="d-block mb-3 font-14 text-info">آموزش فصل به فصل حسابان یک </a>
                     <p class="font-13">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
                     <span class="text-muted">تاریخ برگزاری : 1399/8/6</span>
-                    <a href="/course" class="btn read-more float-left ml-3">ادامه مطلب</a>
+                    <a href="/Book" class="btn read-more float-left ml-3">ادامه مطلب</a>
                     <hr>
                 </div>
 
                 <div class="events">
-                    <a href="/course" class="d-block mb-3 font-14 text-info">آموزش فصل به فصل حسابان دو</a>
+                    <a href="/Book" class="d-block mb-3 font-14 text-info">آموزش فصل به فصل حسابان دو</a>
                     <p class="font-13">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
                     <span class="text-muted">تاریخ برگزاری : 1399/8/6</span>
-                    <a href="/course" class="btn read-more float-left ml-3">ادامه مطلب</a>
+                    <a href="/Book" class="btn read-more float-left ml-3">ادامه مطلب</a>
                     <hr>
                 </div>
 
                 <div class="events">
-                    <a href="/course" class="d-block mb-3 font-14 text-info"> آموزش فصل به فصل آمار و احتمال</a>
+                    <a href="/Book" class="d-block mb-3 font-14 text-info"> آموزش فصل به فصل آمار و احتمال</a>
                     <p class="font-13">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است</p>
                     <span class="text-muted">تاریخ برگزاری : 1399/8/6</span>
-                    <a href="/course" class="btn read-more float-left ml-3">ادامه مطلب</a>
+                    <a href="/Book" class="btn read-more float-left ml-3">ادامه مطلب</a>
                     <hr>
                 </div>
 
@@ -411,14 +411,14 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card custom-card mb-3 shadow-sm">
 
-                    <img src="{{item.blog_img.url}}" alt="article" class="img-fluid card-img-top">
+                    <img src="{{item.Blog_image.url}}" alt="article" class="img-fluid card-img-top">
 
                     <div class="card-body">
                         <div class="text-center mb-2 mt-2">
-                            <a href="/article/{{item.id}}" class="card-link font-14">{{item.blog_title}}</a>
+                            <a href="/article/{{item.id}}" class="card-link font-14">{{item.Blog_title}}</a>
                         </div>
                         <p class="card-text font-13 vazir">
-                            {{item.blog_descreption}}
+                            {{item.Blog_descreption}}
                         </p>
                         <span class="bg-light p-2 text-muted font-12 ">
                             <i class="fa fa-pen ml-1"></i> ادمین
