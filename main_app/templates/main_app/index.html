@@ -4,7 +4,7 @@
     {%load static%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قالب آموزشی ایزی مت</title>
+    <title>آموزش </title>
     <link rel="stylesheet" href="{%static 'main_app/'%}css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="{%static 'main_app/'%}css/carousel/owl.carousel.min.css">
     <link rel="stylesheet" href="{%static 'main_app/'%}css/carousel/owl.theme.default.min.css">
@@ -13,14 +13,13 @@
     <link rel="stylesheet" href="{%static 'main_app/'%}css/fontawesome/css/all.css">
 </head>
 <body>
-    
 <!----- Start header ----->
     <header class="bg-white">
         <div class="container">
             <div class="row pb-3">
 
                 <div class="d-none d-lg-block col-lg-2">
-                    <img src="{%static 'main_app/'%}images/logo.png" alt="EasyMath" title="EasyMath" class="img-fluid">
+                    <img src="{%static 'main_app/'%}images/logomathshahabi.png" alt="MathwithShahabi" title="MathwithShahabi" class="img-fluid">
                 </div>
 
                 <div class="d-none d-lg-flex col-lg-6 align-items-center search-box">
@@ -66,11 +65,11 @@
             <div class="row"><!----- Start mobile header ----->
 
                 <div class="col-12 d-flex d-lg-none justify-content-center">
-                    <img src="{%static 'main_app/'%}images/logo.png" alt="EasyMath" alt="EasyMath">
+                    <img src="{%static 'main_app/'%}images/logomathshahabi.png" alt="MathwithShahabi" alt="MathwithShahabi">
                 </div>
 
                 <div class="col-12 d-flex d-lg-none justify-content-center mb-4 mobile-header">
-                    <a href="/sign_up" class="border-left ml-3"><i class="fa fa-user-plus ml-3"></i></a>
+                    <a href="/sign-up" class="border-left ml-3"><i class="fa fa-user-plus ml-3"></i></a>
                     <a href="/login" class="border-left ml-3"><i class="fa fa-lock ml-3"></i></a>
                     <a href="/teach" class="border-left ml-3"><i class="fa fa-graduation-cap ml-3"></i></a>
                     <a href="#" class="border-left ml-3 dropdown" data-toggle="dropdown"><span class="badge badge-info badge-pill">2</span><i class="fa fa-shopping-basket ml-3"></i>
@@ -142,7 +141,7 @@
                         </div>
 
                     </li>
-                    <li class="nav-item ml-3 custom-nav-item"><a href="/blog" class="nav-link">بلاگ</a></li>
+                    <li class="nav-item ml-3 custom-nav-item"><a href="#" class="nav-link">بلاگ</a></li>
                     <li class="nav-item ml-3 custom-nav-item"><a href="/contact_us" class="nav-link">تماس باما</a></li>
                 </ul>
             </div>
@@ -150,6 +149,8 @@
 
     </nav>
     <!----- End menu ----->
+  
+{%block 'vasat'%}
 
     <!----- Start middle box ----->
     <div class="d-none d-md-flex middle-box">
@@ -226,16 +227,16 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card custom-card mb-3">
                     <div class="sub-layer">
-                        <img src="{{item.Book_img.url}}" alt="Math" class="img-fluid card-img-top">
+                        <img src="{{item.image.url}}" alt="Math" class="img-fluid card-img-top">
                         <div class="over-layer">
-                            <a href="/Book/{{item.id}}" class="btn btn-primary">مشاهده و خرید </a>
+                            <a href="/course/{{item.id}}" class="btn btn-primary">مشاهده و خرید </a>
                             <span class="badge badge-secondary badge-pill"> 50 <i class="fa fa-shopping-basket pr-1"></i></span> 
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href="/Book/{{item.id}}" class="card-link"> {{item.Book_title}}</a>
+                        <a href="/course/{{item.id}}" class="card-link"> {{item.title}}</a>
                         <p class="text-justify card-text vazir font-14 mt-3">
-                        {{item.Book_descreption}} 
+                        {{item.description}} 
                         </p>
                     </div>
                     <div class="card-footer">
@@ -433,13 +434,14 @@
         </div>
     </div>
     <!----- End article boxes ----->
+{%endblock%}
 
     <footer class="bg-white"><!----- Start footer ----->
         <div class="container py-2">
             <div class="row">
 
                 <div class="col-md-4">
-                    <img src="{%static 'main_app/'%}images/logo.png" alt="" class="img-fluid">
+                    <img src="{%static 'main_app/'%}images/logomathshahabi.png" alt="" class="img-fluid">
                     <p class="text-justify font-14 vazir mb-4">
                         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
                         استفاده از طراحان گرافیک است.
@@ -447,7 +449,7 @@
                     </p>
                     <p class="font-14"><i class="fas fa-map-marker-alt text-muted ml-2"></i> ایران، تهران،...</p>
                     <p class="font-14"><i class="fas fa-envelope text-muted ml-2"></i> shahabi_te@yahoo.com</p>
-                    <p class="font-14"><i class="fa fa-phone text-muted ml-2"></i> +989044108647 </p>
+                    <p class="font-14"><i class="fa fa-phone text-muted ml-2"></i>+989044108647</p>
                 </div>
 
                 <div class="col-md-2 text-center footer-links">
@@ -499,7 +501,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <hr>
-                    <p class="text-muted font-14">کلیه حقوق این سایت متعلق به easymath است</p>
+                    <p class="text-muted font-14"> کلیه حقوق این سایت متعلق به MathwithShahabi است</p>
                 </div>
             </div>
 
@@ -507,7 +509,9 @@
     </footer><!----- End footer ----->
 
 
-    
+
+
+
     <script src="{%static 'main_app/'%}js/jquery-3.3.1.min.js"></script>
     <script src="{%static 'main_app/'%}js/popper.min.js"></script>
     <script src="{%static 'main_app/'%}js/bootstrap.min.js"></script>

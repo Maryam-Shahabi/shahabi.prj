@@ -71,15 +71,13 @@ class Product(models.Model):  # محصول
     product_type = models.CharField(max_length=10, choices=PRODUCT_TYPE_CHOICES, default='full', verbose_name="نوع محصول")
     description = models.TextField(blank=True, verbose_name="توضیحات محصول")
     image=models.ImageField(upload_to="photos",null=True,blank=True,verbose_name="تصویر محصول",)
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
-
     def __str__(self):
         return f"{self.title} - {self.get_product_type_display()}"
 
     class Meta:
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"
-        ordering = ["-created_at"]
+        ordering = ["title"]
 
 # ==================== Video Model ====================
 class Video(models.Model):  # ویدئو
