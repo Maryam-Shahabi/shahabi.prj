@@ -29,7 +29,7 @@ class Book(models.Model):  # کتاب
 
 # ==================== Chapter Model ====================
 class Chapter(models.Model):  # فصل
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name="کتاب")
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name="کتاب", related_name="chapters")
     title = models.CharField(max_length=100, verbose_name="عنوان فصل")
     order = models.PositiveIntegerField(verbose_name="ترتیب فصل")
 
@@ -57,20 +57,19 @@ class Lesson(models.Model):  # درس
 
 # ==================== Product Model ====================
 class Product(models.Model):  # محصول
-    PRODUCT_TYPE_CHOICES = [
-        ('full', 'کل کتاب'),
-        ('chapter', 'فصل خاص'),
-        ('summary', 'جمع‌بندی'),
-    ]
-
     book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name="کتاب")
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, null=True, blank=True, verbose_name="فصل")
     title = models.CharField(max_length=150, verbose_name="عنوان محصول")
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="قیمت (تومان)")
-    is_active = models.BooleanField(default=True, verbose_name="فعال؟")
-    product_type = models.CharField(max_length=10, choices=PRODUCT_TYPE_CHOICES, default='full', verbose_name="نوع محصول")
+    teacher=models.CharField(max_length=150, verbose_name="مدرس",null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=0, verbose_name="قیمت (تومان)", null=True)
+    discount_price=models.DecimalField(max_digits=10, decimal_places=0, verbose_name="قیمت  با تخفیف (تومان)", null=True, blank=True)
+    cho=[("active","فعال"),("inactive","غیرفعال")]
+    is_active = models.CharField(max_length=10, choices=cho, default="active", verbose_name="وضعیت دوره")
+    choi=[("full","کل کتاب"),("part","یک فصل کتاب"),("summary","جمع بندی")]
+    product_type = models.CharField(max_length=10, choices=choi, default="full", verbose_name="نوع محصول")
     description = models.TextField(blank=True, verbose_name="توضیحات محصول")
-    image=models.ImageField(upload_to="photos",null=True,blank=True,verbose_name="تصویر محصول",)
+    image=models.ImageField(upload_to="photos",null=True,blank=True,verbose_name="تصویر محصول")
+
     def __str__(self):
         return f"{self.title} - {self.get_product_type_display()}"
 
@@ -93,15 +92,14 @@ class Video(models.Model):  # ویدئو
     is_free = models.BooleanField(default=False, verbose_name="رایگان است؟")
     description = models.TextField(blank=True, verbose_name="توضیحات ویدئو")
     product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True, blank=True, verbose_name="محصول مرتبط")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
-
+    
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name = "ویدئو"
         verbose_name_plural = "ویدئوها"
-        ordering = ["created_at"]
+        ordering = ["title"]
 
 # ==================== SampleQuestion Model ====================
 class SampleQuestion(models.Model):  # نمونه سوال
@@ -114,7 +112,7 @@ class SampleQuestion(models.Model):  # نمونه سوال
         verbose_name="فایل سوال"
     )
     is_full_book = models.BooleanField(default=False, verbose_name="برای کل کتاب است؟")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+
 
     def __str__(self):
         return self.title
@@ -122,7 +120,6 @@ class SampleQuestion(models.Model):  # نمونه سوال
     class Meta:
         verbose_name = "نمونه سوال"
         verbose_name_plural = "نمونه سوالات"
-        ordering = ["-created_at"]
 
 # ==================== Blog Model ====================
 class Blog(models.Model):  # مقاله
@@ -137,4 +134,4 @@ class Blog(models.Model):  # مقاله
         verbose_name = "مقاله"
         verbose_name_plural = "مقالات"
         ordering = ["-created_at"]
-       
+

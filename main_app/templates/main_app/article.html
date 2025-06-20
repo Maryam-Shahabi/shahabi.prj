@@ -2,15 +2,17 @@
 {%load static%}
 
 {%block 'zirmenu'%}
+{%for item in ar %}
 <div class="container">
     <div class="container">
         <ul class="breadcrumb bg-white mt-4">
             <li class="breadcrumb-item"><a href="#" class="font-12 vazir">صفحه اصلی</a></li>
             <li class="breadcrumb-item"><a href="# " class="pr-2 font-12 vazir">بلاگ</a></li>
-            <li class="breadcrumb-item"><a href="#" class="pr-2 font-12 vazir">راهنمای بهینه سازی وبسایت برای افراد مبتدی</a></li>
+            <li class="breadcrumb-item"><a href="#" class="pr-2 font-12 vazir">{{item.title}}</a></li>
         </ul>
     </div>
 </div>
+{%endfor%}
 {%endblock%}   
 
 {%block 'vasat'%}
@@ -19,21 +21,20 @@
  <div class="container">
     <div class="row">
         <div class="col-12">
-            <img src="{{item.Blog_image.url}}" alt="article" class="img-fluid px-3">
+            <img src="{{item.image.url}}" alt="article" class="img-fluid px-3">
         </div>
     </div>
     <div class="row ">
         
         <div class="col-12 my-article">
-            <h1 class="pr-3 my-4">  {{item.Blog_title}}</h1>
+            <h1 class="pr-3 my-4">  {{item.title}}</h1>
             <div class="mb-5">
-                <span class="text-muted pr-3 font-12"><i class="fa fa-pen ml-2"></i>مریم شهابی</span>
-                <span class="text-muted pr-3 font-12"><i class="fa fa-calendar ml-2"></i>1398/10/8</span>
-                <span class="text-muted pr-3 font-12"><i class="fa fa-eye ml-2"></i>230</span>
+                <span class="text-muted pr-3 font-12"><i class="fa fa-pen ml-2"></i>ادمین</span>
+                <span class="text-muted pr-3 font-12"><i class="fa fa-calendar ml-2"></i>{{item.created_at}}</span>
                 <span class="text-muted pr-3 font-12">دسته بندی :آموزش ریاضی</span>
             </div>
             <p  class="vazir">
-                {{item.Blog_descreption}}
+                {{item.description}}
             </p>
         </div>
 {%endfor%}       
@@ -92,32 +93,6 @@
 
     </form>
 
-    <div class="bg-light my-3 p-2 pb-4">
-
-        <div class="d-flex align-items-center">
-            <p class="text-danger mb-0 vazir font-13">arash</p>
-            <small class="mx-5 text-muted">15 تیر 1398</small>
-        </div>
-        <p class="text-justify my-2 vazir font-13">خیلی عالی و کاربردی بود.</p>
-
-        <div class=" shadow-sm mr-5 w-75 mt-3 p-2 bg-white">
-            <div class="d-flex align-items-center">
-                <p class="text-danger mb-0 vazir font-13">Admin</p>
-                <small class="mx-5 text-muted">15 تیر 1398</small>
-            </div>
-            <p class="text-justify my-2 vazir font-13"> خوشحالیم که براتون مفید بوده</p>
-        </div>
-
-    </div>
-
-    <div class="bg-light my-3 p-2 pb-4">
-        <div class="d-flex align-items-center">
-            <p class="text-danger mb-0 vazir font-13">ali</p>
-            <small class="mx-5 text-muted">15 تیر 1398</small>
-        </div>
-        <p class="text-justify my-2 vazir font-13">
-           بسیار عالی</p>
-    </div>
 
 </div><!----- End article comments ----->
 <div class="container">
@@ -131,76 +106,28 @@
 <!----- Start article boxes ----->
 <div class="container">
     <div class="row mt-3 mb-5">
-
+{%for item in bl%}
         <div class="col-md-6 col-lg-4">
             <div class="card custom-card mb-3 shadow-sm">
 
-                <img src="{%static 'main_app/'%}images/post1-1.jpg" alt="article" class="img-fluid card-img-top">
+                <img src="{{item.image.url}}" alt="article" class="img-fluid card-img-top">
 
                 <div class="card-body">
                     <div class="text-center mb-2 mt-2">
-                        <a href="/article" class="card-link font-14">همه چیز درباره عدد پی</a>
+                        <a href="/article" class="card-link font-14">{{item.title}}</a>
                     </div>
                     <p class="card-text font-13 vazir">
-                        لورم ایپسوم متن ساختگی با
-                         تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+                    
                     </p>
                     <span class="bg-light p-2 text-muted font-12 ">
                         <i class="fa fa-pen ml-1"></i> ادمین
-                        <i class=" fa fa-eye mx-1"></i>140
                     </span>
-                    <a href="/article" class="btn float-left read-more">بیشتر بخوانید</a>
+                    <a href="/article/{{item.id}}" class="btn float-left read-more">بیشتر بخوانید</a>
                 </div>
 
             </div>
         </div>
-
-        <div class="col-md-6 col-lg-4">
-            <div class="card custom-card  mb-3 shadow-sm">
-
-                <img src="{%static 'main_app/'%}images/post1-2.jpg" alt="" class="img-fluid card-img-top">
-
-                <div class="card-body">
-                    <div class="text-center mb-2 mt-2">
-                        <a href="/article" class="card-link font-14">راهکارهای افزایش تمرکز در زمان مطالعه </a>
-                    </div>
-                    <p class="card-text font-13 vazir">
-                        لورم ایپسوم متن ساختگی با
-                         تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                    </p>
-                    <span class="bg-light p-2 text-muted font-12">
-                        <i class="fa fa-pen ml-1"></i> ادمین
-                        <i class=" fa fa-eye mx-1"></i>140
-                    </span>
-                    <a href="/article" class="btn float-left read-more">بیشتر بخوانید</a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-            <div class="card custom-card  mb-3 shadow-sm">
-
-                <img src="{%static 'main_app/'%}images/post1-3.jpg" alt="" class="img-fluid card-img-top">
-
-                <div class="card-body">
-                    <div class="text-center mb-2 mt-2 font-14">
-                        <a href="/article" class="card-link">طبیعت دنباله فیبوناتچی را دوست دارد!</a>
-                    </div>
-                    <p class="card-text font-13 vazir">
-                        لورم ایپسوم متن ساختگی با
-                         تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                    </p>
-                    <span class="bg-light p-2 text-muted font-12">
-                        <i class="fa fa-pen ml-1"></i> ادمین
-                        <i class=" fa fa-eye mx-1"></i>140
-                    </span>
-                    <a href="/article" class="btn float-left read-more">بیشتر بخوانید</a>
-                </div>
-
-            </div>
-        </div>         
-
+{%endfor%}
     </div>
 </div>
 <!----- End article boxes ----->

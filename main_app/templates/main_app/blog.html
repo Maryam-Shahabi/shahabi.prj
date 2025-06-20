@@ -1,221 +1,57 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    {%load static%}
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بلاگ</title>
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/carousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/bootstrap/bootstrap-rtl.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/customcss/style.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/fontawesome/css/all.css">
-</head>
-<body>
-
-    <!----- Start menu ----->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm sticky-top">
-
-        <div class="container">
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#mainmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="collapse navbar-collapse" id="mainmenu">
-                <ul class="navbar-nav pr-0 custom-navbar font-14 text-center">
-                    <li class="nav-item ml-3 custom-nav-item"><a href="/" class="nav-link">صفحه اصلی</a></li>
-                    <li class="nav-item ml-3 dropdown custom-nav-item"><a href="#" class="nav-link  dropdown-toggle" data-toggle="dropdown">دوره های آموزشی</a>
-
-                        <div class="dropdown-menu custom-dropdown-menu dropdown-menu-right font-13 text-right">
-                            <a href="/course" class="dropdown-item border-bottom py-2">صفر تا صد ریاضی دهم</a>
-                            <a href="/course" class="dropdown-item border-bottom py-2"> صفر تا صد ریاضی یازدهم تجربی </a>
-                            <a href="/course" class="dropdown-item border-bottom py-2">صفر تا صد هندسه یک دهم</a>
-                            <a href="/course" class="dropdown-item border-bottom py-2">صفر تا صد هندسه دو یازدهم</a>
-                            <a href="/course" class="dropdown-item border-bottom py-2"> صفر تا صد هندسه سه دوازدهم</a>
-                            <a href="/course" class="dropdown-item py-2"> صفر تا صد ریاضیات گسسته</a>
+{%extends "main_app/layout.html"%}
+{%load static%}
+{%block 'zirmenu'%}
+<div class="page-title d-flex flex-column justify-content-center align-items-center mb-4">
+    <h4 class="text-white mb-5"> بلاگ آموزشی </h4>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-6 mx-auto">
+                <form action="" method="">
+                    <div class="input-group">
+                        <input type="search" name="" class="form-control" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
+                        <div class="input-group-append">
+                            <button type="submit" name="" class="btn btn-info font-13">جستجو</button>
                         </div>
-
-                    </li>
-                    <li class="nav-item ml-3 dropdown custom-nav-item"><a href="#" class="nav-link  dropdown-toggle" data-toggle="dropdown">صفحات</a>
-
-                        <div class="dropdown-menu  custom-dropdown-menu dropdown-menu-right font-13 text-right">
-                            <a href="/panel-user" class="dropdown-item border-bottom py-2">پنل کاربری</a>
-                            <a href="/search" class="dropdown-item border-bottom py-2">جستجو</a>
-                            <a href="/error404" class="dropdown-item py-2">Error 404</a>
-                        </div>
-
-                    </li>
-                    <li class="nav-item ml-3 custom-nav-item"><a href="/blog" class="nav-link">بلاگ</a></li>
-                    <li class="nav-item ml-3 custom-nav-item"><a href="/contact_us" class="nav-link">تماس باما</a></li>
-                </ul>
-            </div>
-        </div>
-
-    </nav>
-    <!----- End menu ----->
-
-    <div class="page-title d-flex flex-column justify-content-center align-items-center mb-4">
-        <h4 class="text-white mb-5"> بلاگ آموزشی easymath</h4>
-         <div class="container">
-             <div class="row">
-                 <div class="col-md-6 mx-auto">
-                    <form action="" method="">
-                        <div class="input-group">
-                            <input type="search" name="" class="form-control" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
-                            <div class="input-group-append">
-                                <button type="submit" name="" class="btn btn-info font-13">جستجو</button>
-                            </div>
-                        </div>
-                    </form>
-                 </div>
+                    </div>
+                </form>
              </div>
          </div>
-    </div>
+     </div>
+</div>
+{%endblock%}   
 
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-5 filter">
-                <form action="" method="">
-                    <div class="form-group">
-                        <select class="form-control">
-                          <option>همه دسته بندی ها</option>
-                          <option>برنامه نویسی</option>
-                          <option>گرافیک</option>
-                        </select>
-                      </div>
-                      <button type="submit" class="btn btn-info font-13">فیلتر</button>
-                </form>
-            </div>
-        </div>
-    </div>
+{%block 'vasat'%}
+<!----- Start article boxes ----->
+<div class="container">
+    <div class="row mt-3 mb-5">
 
-    <!----- Start article boxes ----->
-    <div class="container">
-        <div class="row mt-3 mb-5">
+      {%for item in bl%}
+        <div class="col-md-6 col-lg-4">
+            <div class="card custom-card mb-3 shadow-sm">
 
-          {%for item in bl%}
-            <div class="col-md-6 col-lg-4">
-                <div class="card custom-card mb-3 shadow-sm">
+                <img src="{{item.image.url}}" alt="article" class="img-fluid card-img-top">
 
-                    <img src="{{item.Blog_image.url}}" alt="article" class="img-fluid card-img-top">
-
-                    <div class="card-body">
-                        <div class="text-center mb-2 mt-2">
-                            <a href="/article/{{item.id}}" class="card-link font-14">{{item.Blog_title}}</a>
-                        </div>
-                        <p class="card-text font-13 vazir">
-                           {{item.Blog_descreption}}
-                        </p>
-                        <span class="bg-light p-2 text-muted font-12 ">
-                            <i class="fa fa-pen ml-1"></i> ادمین
-                            <i class=" fa fa-eye mx-1"></i>140
-                        </span>
-                        <a href="/article" class="btn float-left read-more">بیشتر بخوانید</a>
+                <div class="card-body">
+                    <div class="text-center mb-2 mt-2">
+                        <a href="/article/{{item.id}}" class="card-link font-14">{{item.title}}</a>
                     </div>
-
-                </div>
-            </div>
-           {%endfor%}
-         
- 
-           
-
-        </div>
-    </div>
-    <!----- End article boxes ----->
-
-    <ul class="pagination  justify-content-center mb-5">
-        <li class="page-item"><a href="#" class="page-link">&lsaquo;</a></li>
-        <li class="page-item"><a href="#" class="page-link">1</a></li>
-        <li class="page-item active"><a href="#" class="page-link">2</a></li>
-        <li class="page-item"><a href="#" class="page-link">3</a></li>
-        <li class="page-item"><a href="#" class="page-link">4</a></li>
-        <li class="page-item"><a href="#" class="page-link">&rsaquo;</a></li>
-    </ul>
-
-
-    <footer class="bg-white"><!----- Start footer ----->
-        <div class="container py-2">
-            <div class="row">
-
-                <div class="col-md-4">
-                    <img src="{%static 'main_app/'%}images/logo.png" alt="" class="img-fluid">
-                    <p class="text-justify font-14 vazir mb-4">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                        استفاده از طراحان گرافیک است.
-                        چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر آنچنان که لازم است. 
+                    <p class="card-text font-13 vazir">
+                      
                     </p>
-                    <p class="font-14"><i class="fas fa-map-marker-alt text-muted ml-2"></i> ایران، تهران،...</p>
-                    <p class="font-14"><i class="fas fa-envelope text-muted ml-2"></i> shahabi_te@yahoo.com</p>
-                    <p class="font-14"><i class="fa fa-phone text-muted ml-2"></i> +989044108647 </p>
-                </div>
-
-                <div class="col-md-2 text-center footer-links">
-                    <span class="mt-5 mb-3 d-block font-14">دسترسی سریع</span>
-                    <ul class="list-unstyled">
-                        <li class="my-3"><a href="#">درباره ما</a></li>
-                        <li class="my-3"><a href="#">تماس با ما</a></li>
-                        <li class="my-3"><a href="#">سوالات متداول</a></li>
-                        <li class="my-3"><a href="#">تاریخچه سفارشات</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-2 text-center footer-links">
-                    <span class="mt-5 mb-3 d-block font-14">لینک های مفید</span>
-                    <ul class="list-unstyled">
-                        <li class="my-3"><a href="#">حساب کاربری</a></li>
-                        <li class="my-3"><a href="#">بازپرداخت</a></li>
-                        <li class="my-3"><a href="#">تخفیف</a></li>
-                        <li class="my-3"><a href="#">رهگیری سفارش</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4 search-box text-center">
-                    <h6  class="my-5">برای اطلاع از  تازه ترین ها به خبرنامه ما بپیوندید!</h6>
-                    <form action="" method="">
-                        <div class="input-group">
-                            <input type="search" name="" class="form-control rounded-pill" placeholder="ایمیل خود را وارد کنید ...">
-                            <div class="input-group-append">
-                                <button type="submit" name="" class="btn btn-info rounded-pill font-13">اشتراک</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="mt-5 social-media">
-                        <a href="#"><i class="fab fa-instagram p-1" id="instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter bg-info p-1"></i></a>
-                        <a href="#"><i class="fab fa-youtube bg-danger p-1"></i></a>
-                        <a href="#"><i class="fab fa-telegram bg-primary p-1"></i></a>
-                    </div>
+                    <span class="bg-light p-2 text-muted font-12 ">
+                        <i class="fa fa-pen ml-1"></i> ادمین
+                    </span>
+                    <a href="/article/{{item.id}}" class="btn float-left read-more">بیشتر بخوانید</a>
                 </div>
 
             </div>
-
-            
-			<div class="row justify-content-end">
-				<a  class="topbutton"> <i class="fa fa-chevron-circle-up"> </i> </a>
-			</div>
-            
-            
-            <div class="row">
-                <div class="col-12 text-center">
-                    <hr>
-                    <p class="text-muted font-14">کلیه حقوق این سایت متعلق به easymath است</p>
-                </div>
-            </div>
-
         </div>
-    </footer><!----- End footer ----->
+       {%endfor%}
+     
 
+       
 
-
-
-
-    <script src="{%static 'main_app/'%}js/jquery-3.3.1.min.js"></script>
-    <script src="{%static 'main_app/'%}js/popper.min.js"></script>
-    <script src="{%static 'main_app/'%}js/bootstrap.min.js"></script>
-    <script src="{%static 'main_app/'%}js/owl.carousel.min.js"></script>
-    <script src="{%static 'main_app/'%}js/myscript.js"></script>
-</body>
-</html>
+    </div>
+</div>
+<!----- End article boxes ----->
+{%endblock%}
