@@ -16,6 +16,8 @@
 {%endblock%}   
 
 {%block 'vasat'%}
+
+
  <!----- Start article content ----->
 {%for item in ar %}
  <div class="container">
@@ -34,7 +36,7 @@
                 <span class="text-muted pr-3 font-12">دسته بندی :آموزش ریاضی</span>
             </div>
             <p  class="vazir">
-                {{item.description}}
+                {{ item.description|safe }}
             </p>
         </div>
 {%endfor%}       

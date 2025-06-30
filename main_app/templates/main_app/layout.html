@@ -23,9 +23,10 @@
                 </div>
 
                 <div class="d-none d-lg-flex col-lg-6 align-items-center search-box">
-                    <form action="" method="">
+                    <form action="" method="post">
+                        {% csrf_token%}
                         <div class="input-group">
-                            <input type="search" name="" class="form-control rounded-pill" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
+                            <input type="search" name="src" class="form-control rounded-pill" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-info rounded-pill font-13">جستجو</button>
                             </div>
@@ -55,7 +56,7 @@
                             </ul>
                         </div>  
                     </a>
-                    <a href="/sign_up" class="btn btn-outline-info font-13 vazir-med-fa"><i class="fa fa-user-plus pl-1"></i>ثبت نام</a>
+                    <a href="{% url 'signup'%}" class="btn btn-outline-info font-13 vazir-med-fa"><i class="fa fa-user-plus pl-1"></i>ثبت نام</a>
                     <a href="/login" class="btn btn-info font-13 vazir-med-fa mx-2">ورود</a>
                     <a href="/teach" class="btn btn-primary font-13 vazir-med-fa">مدرس شوید</a>
                 </div>
@@ -135,7 +136,7 @@
                     <li class="nav-item ml-3 dropdown custom-nav-item"><a href="#" class="nav-link  dropdown-toggle" data-toggle="dropdown">صفحات</a>
 
                         <div class="dropdown-menu  custom-dropdown-menu dropdown-menu-right font-13 text-right">
-                            <a href="/panel_user" class="dropdown-item border-bottom py-2">پنل کاربری</a>
+                            <a href="/paneluser" class="dropdown-item border-bottom py-2">پنل کاربری</a>
                             <a href="/search" class="dropdown-item border-bottom py-2">جستجو</a>
                             <a href="/error404" class="dropdown-item py-2">Error 404</a>
                         </div>

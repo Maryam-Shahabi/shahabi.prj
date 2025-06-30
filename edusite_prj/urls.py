@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from main_app.views import home,news,sign_up, course,blog,atricle,category,contact_us,panel_user,search,teach,error404,login,layout
+from main_app.views import home,news,signup, course,blog,atricle,category,contact_us,paneluser,search,teach,error404,login,logout,layout,dashboard
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,12 +28,14 @@ urlpatterns = [
     path("course/<adad>", course),
     path("blog/", blog),
     path("article/<adad>", atricle),
-    path("login/",login),  
+    path("login/",login, name="login"),  
+    path("logout/",logout, name="logout"), 
     path("category/", category),
     path("contact_us/", contact_us),
     path("news/", news),
-    path("sign_up/", sign_up),
-    path("panel_user/",panel_user),
+    path("signup/", signup, name="signup"),
+    path("paneluser/",paneluser, name="paneluser"),
+    path("dashboard/",dashboard, name="dashboard"),
     path("search/",search), 
     path("teach/",teach),
     path("error404/",error404),

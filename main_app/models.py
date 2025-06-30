@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils import timezone
+from ckeditor.fields import RichTextField
+from django.contrib.auth.models import AbstractUser
 # ==================== Grade Model ====================
 class Grade(models.Model):  # پایه
     name = models.CharField(max_length=30, verbose_name="پایه")
@@ -124,7 +126,7 @@ class SampleQuestion(models.Model):  # نمونه سوال
 # ==================== Blog Model ====================
 class Blog(models.Model):  # مقاله
     title = models.CharField(max_length=100, verbose_name="عنوان مقاله")
-    description = models.TextField(verbose_name="توضیحات مقاله", null=True, default="مقاله ریاضی")
+    description = RichTextField(verbose_name="توضیحات مقاله", null=True, default="مقاله ریاضی")
     image = models.ImageField(upload_to="photos", null=True, blank=True, verbose_name="عکس مقاله")
     created_at = models.DateTimeField(default=timezone.now, verbose_name="تاریخ ایجاد")
     def __str__(self):
@@ -135,3 +137,11 @@ class Blog(models.Model):  # مقاله
         verbose_name_plural = "مقالات"
         ordering = ["-created_at"]
 
+# ==================== Users Model ====================
+class CustomUser(AbstractUser):
+    roleitem=(("seller","فروشنده"),("customer","مشتری"))
+    role=models.CharField(max_length=20, choices=roleitem, default="customer")
+    class Meta:
+        verbose_name="کاربر"
+        verbose_name_plural="کاربران"
+        

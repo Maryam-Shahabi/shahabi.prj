@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main_app",
+    "ckeditor"
 ]
+
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -70,6 +73,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "edusite_prj.wsgi.application"
+
+LOGIN_URL="/login/"
 
 
 # Database
@@ -125,3 +130,9 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+
+
+
+
+AUTH_USER_MODEL = 'main_app.CustomUser'

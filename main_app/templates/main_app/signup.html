@@ -21,8 +21,15 @@
 
                     <div class="card-body">
                         <h5 class="shadow-sm text-center mb-4 py-3"> عضویت در سایت </h5>
-
-                        <form action="" method="">
+                        {% if messages %}
+                        <ul>
+                        {% for message in messages %}
+                            <li style="color:red;">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <form action="" method="post">
+                            {% csrf_token %}
                             
                             <div class="form-group">
                                 <label for="name"> نام : </label>
@@ -30,7 +37,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text  my-icon"><i class="fa fa-user align-middle"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید">
+                                    <input type="text" name="fname" class="form-control" placeholder="نام خود را وارد کنید">
                                 </div>
                             </div>
                 
@@ -40,7 +47,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text  my-icon"> <i class="fa fa-user align-middle"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="نام خانوادگی خود را وارد کنید ">
+                                    <input type="text" name="lname" class="form-control" placeholder="نام خانوادگی خود را وارد کنید ">
                                 </div>
                             </div>
                 
@@ -50,7 +57,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text  my-icon"> <i class="fa fa-envelope align-middle"></i></span>
                                     </div>
-                                    <input type="email" class="form-control" placeholder=" ایمیل خود را وارد کنید">
+                                    <input type="email" name="eml" class="form-control" placeholder=" ایمیل خود را وارد کنید">
                                 </div>
                             </div>
                 
@@ -60,7 +67,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text  my-icon"> <i class="fa fa-user-plus align-middle"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="نام کاربری خود را وارد کنید ">
+                                    <input type="text" name="usr" class="form-control" placeholder="نام کاربری خود را وارد کنید ">
                                 </div>
                             </div>
                 
@@ -70,13 +77,23 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text  my-icon"> <i class="fa fa-lock align-middle"></i></span>
                                     </div>
-                                    <input type="password" class="form-control" placeholder="رمز عبور خود را وارد کنید">
+                                    <input type="password" name="pss1" class="form-control" placeholder="رمز عبور خود را وارد کنید">
                                 </div>
                             </div>
-                            
+                             
+                            <div class="form-group">
+                                <label for="">تکرار رمز عبور: </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text  my-icon"> <i class="fa fa-lock align-middle"></i></span>
+                                    </div>
+                                    <input type="password" name="pss2" class="form-control" placeholder="رمز عبور خود را وارد کنید">
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-block rounded-pill custom-btn font-13 mt-4">ثبت نام</button>
                 
-                            <p class="text-center my-3 font-12 vazir">قبلا در سایت ثبت نام کرده اید ؟ <a href="/login" class="login vazir">وارد شوید</a></p>
+                            <p class="text-center my-3 font-12 vazir">قبلا در سایت ثبت نام کرده اید ؟ <a href="{% url 'login'%}" class="login vazir">وارد شوید</a></p>
         
                         </form>
                        

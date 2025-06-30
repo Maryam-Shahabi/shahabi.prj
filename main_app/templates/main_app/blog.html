@@ -6,9 +6,10 @@
      <div class="container">
          <div class="row">
              <div class="col-md-6 mx-auto">
-                <form action="" method="">
+                <form action="" method="post">
+                    {% csrf_token %}
                     <div class="input-group">
-                        <input type="search" name="" class="form-control" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
+                        <input type="text" name="srch" class="form-control" placeholder="عنوان مورد نظر خود را جستجو کنید ...">
                         <div class="input-group-append">
                             <button type="submit" name="" class="btn btn-info font-13">جستجو</button>
                         </div>
@@ -24,13 +25,13 @@
 <!----- Start article boxes ----->
 <div class="container">
     <div class="row mt-3 mb-5">
-
-      {%for item in bl%}
+       
+        {%for item in r%}
         <div class="col-md-6 col-lg-4">
             <div class="card custom-card mb-3 shadow-sm">
-
+ 
                 <img src="{{item.image.url}}" alt="article" class="img-fluid card-img-top">
-
+ 
                 <div class="card-body">
                     <div class="text-center mb-2 mt-2">
                         <a href="/article/{{item.id}}" class="card-link font-14">{{item.title}}</a>
@@ -43,13 +44,33 @@
                     </span>
                     <a href="/article/{{item.id}}" class="btn float-left read-more">بیشتر بخوانید</a>
                 </div>
-
+ 
             </div>
         </div>
        {%endfor%}
-     
 
-       
+       {%for item in  bl%}
+       <div class="col-md-6 col-lg-4">
+           <div class="card custom-card mb-3 shadow-sm">
+
+               <img src="{{item.image.url}}" alt="article" class="img-fluid card-img-top">
+
+               <div class="card-body">
+                   <div class="text-center mb-2 mt-2">
+                       <a href="/article/{{item.id}}" class="card-link font-14">{{item.title}}</a>
+                   </div>
+                   <p class="card-text font-13 vazir">
+                     
+                   </p>
+                   <span class="bg-light p-2 text-muted font-12 ">
+                       <i class="fa fa-pen ml-1"></i> ادمین
+                   </span>
+                   <a href="/article/{{item.id}}" class="btn float-left read-more">بیشتر بخوانید</a>
+               </div>
+
+           </div>
+       </div>
+      {%endfor%}
 
     </div>
 </div>
