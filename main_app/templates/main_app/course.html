@@ -29,30 +29,37 @@
                 <li class="list-group-item font-13">قیمت دوره : {{item.price}} تومان</li>
  
             </ul>
+            <button class="btn btn-info btn-block mt-3 py-2 font-12">
+                <i class="fa fa-cart-plus align-middle"></i>
+                <a href="/addcart/{{item.id}}" class="text-white text-decoration-none">افزودن به سبد خرید</a>
+            </button>
+           
             {%endfor%}
-            <button class="btn btn-info btn-block mt-3 py-2 font-12"><i class="fa fa-cart-plus align-middle"></i> افزودن به سبد خرید</button>
         </div>
 
         <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-header bg-white px-0 course-table">
                     <ul class="nav nav-justified pr-0">
-                        <li class="nav-item"><a href="#course-info" class="nav-link active font-14" data-toggle="list">معرفی دوره</a></li>
+                        <li class="nav-item"><a href="#course-info" class="nav-link active font-14" data-toggle="list"> نمونه فیلم تدریس دوره</a></li>
                         <li class="nav-item"><a href="#comment" class="nav-link font-14" data-toggle="list">پرسش و پاسخ دوره</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="course-info"><!-- Start course info -->
-                            {%for item in c1%}
+                            {% for item in c1 %}
                             <h1 class="mb-3 text-info">{{item.title}}</h1>
-                            {%endfor%}
-                            <video src="" controls class="embed-responsive embed-responsive-item"></video>
-
+                            {% with item.videos.first as itm %}
+                            {% if itm %}
+                            <video src="{{ itm.video_file.url }}" controls class="embed-responsive embed-responsive-item"></video>
+                            {% endif %}
+                            {% endwith %}
                             <p class="text-justify course-text vazir font-14 my-5">
                                 آموزش صفر تا صد خط به خط کتاب درسی همراه با
                                  حل نمونه سوالات پایان هر درس و سوالات امتحانات نهایی سال های اخیر. 
                             </p>
+                            {% endfor %}
 
                             <h6 class="mb-3 mt-3">سر فصل ها :</h6>
                         {%for item in c1%}        
@@ -66,49 +73,60 @@
                         </div><!-- End course info -->
 
                         <div class="tab-pane fade" id="comment"><!-- Start comment -->
-
-                            <form action="" method="">
-                                <div class="row">
-                                    <div class="col form-group">
-                                        <input type="text" id="name" class="form-control rounded-pill" placeholder="نام خود را وارد کنید ...">
-                                    </div>
-                                    <div class="col form-group">
-                                        <input type="email" id="email" class="form-control rounded-pill" placeholder="ایمیل خود را وارد کنید ...">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <textarea  cols="30" rows="10" class="form-control w-100 rounded-lg p-3" placeholder="دیدگاه خود را وارد کنید ..."></textarea>
-                                </div>
-
-                                <section class='rating-widget mt-2'><!-- star rating-->
-                                    <div class='rating-stars'>
-                                        <ul id='stars'>
-                                            <li class='star' data-tooltip='ضعیف' data-value='1'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' data-tooltip='متوسط' data-value='2'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' data-tooltip='خوب' data-value='3'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' data-tooltip='خیلی خوب' data-value='4'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star' data-tooltip='عالی' data-value='5'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </section>
+                
                             
-                                <button type="submit" class="btn btn-primary rounded-pill mr-auto d-block font-13">ارسال</button>
-                            </form>
+                {% if messages%}
+                    {% for message in messages%}
+                        <div class="alert alert-success" role="alert">
+                            {{message}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+ 
+                <form id="rating-form" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col form-group">
+                            {{f.name}}
+                        </div>
+                        <div class="col form-group">
+                            {{f.email}}
+                        </div>
+                    </div>    
+                        <div class="form-group">
+                            {{f.message}}
+                        </div>
+                            {{f.rating}}           
+                        <section class='rating-widget mt-2'>
+                            <div class='rating-stars'>
+                                <ul id='stars'>
+                                          {% for i in "12345" %}
+                                    <li class='star' data-value='{{ i }}'>
+                                     <i class='fa fa-star fa-fw'></i>
+                                    </li>
+                                              {% endfor %}
+                                </ul>
+                            </div>
+                        </section>
 
-                        </div><!-- End comment -->
+                    <p id="rating-error" style="color: red; display: none;">لطفاً امتیاز خود را انتخاب کنید.</p>
+    
+                    <button type="submit" class="btn btn-primary rounded-pill mr-auto d-block font-13">ارسال</button>
+                </form>   
+                                {% if positive_feedbacks %}
+                                 {% for feedback in positive_feedbacks %}
+                                <div class="bg-light my-3 p-2 pb-4">
+                                    <div class="d-flex align-items-center">
+                                        <p class="text-danger mb-0 vazir font-13">{{ feedback.name }}</p>
+                                        <small class="mx-5 text-muted">{{ feedback.created_at}}</small>
+                                    </div>
+                                    <p class="text-justify my-2 vazir font-13">{{ feedback.message }}</p>
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                    </div><!-- End comment -->
 
-
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -126,7 +144,7 @@
 
 <div class="container">
     <div class="row my-3">
-    {%for item in c%}    
+    {%for item in same_grade_products %}    
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card custom-card mb-3">
                 <div class="sub-layer">
@@ -153,3 +171,4 @@
     </div>
 </div>
 {%endblock%}
+

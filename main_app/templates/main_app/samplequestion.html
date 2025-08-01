@@ -1,0 +1,47 @@
+{% extends "main_app/layout.html" %}
+{% load static %}
+{% block 'zirmenu' %}
+<div class="container">
+    <ul class="breadcrumb bg-white mt-4">
+        <li class="breadcrumb-item"><a href="/" class="font-12 vazir">صفحه اصلی</a></li>
+        <li class="breadcrumb-item active font-12 vazir">نمونه سوالات نهایی</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block 'vasat' %}
+<div class="container">
+    <h2 class="text-info mt-4 mb-4">نمونه سوالات نهایی</h2>
+
+    {% for book in books %}
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0 font-15 text-primary">📘 {{ book.title }} - {{ book.grade.name }}</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                {% for sq in book.samplequestion_set.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center font-14">
+                    <span>
+                        {{ sq.title }}
+                        {% if sq.chapter %}
+                            (فصل: {{ sq.chapter.title }})
+                        {% elif sq.is_full_book %}
+                            <span class="badge badge-success font-11">کل کتاب</span>
+                        {% endif %}
+                    </span>
+                    <a href="{{ sq.file.url }}" class="btn btn-sm btn-info" download>
+                        <i class="fa fa-download"></i> دانلود
+                    </a>
+                </li>
+                {% empty %}
+                <li class="list-group-item font-13 text-muted">نمونه سوالی برای این کتاب ثبت نشده است.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted vazir font-14">هیچ نمونه سوالی یافت نشد.</p>
+    {% endfor %}
+</div>
+{% endblock %}

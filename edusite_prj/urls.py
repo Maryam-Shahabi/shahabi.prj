@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from main_app.views import home,news,signup, course,blog,atricle,category,contact_us,paneluser,search,teach,error404,login,logout,layout,dashboard
+from main_app.views import home,signup, course,blog,atricle,category,contactus,paneluser,search,teach,login,logout,layout,dashboard,forgetpassword,passwordreset,addcart,deletecart,samplequestion
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,19 +25,22 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("layout/", layout),
     path("", home),
-    path("course/<adad>", course),
-    path("blog/", blog),
-    path("article/<adad>", atricle),
+    path("course/<adad>", course ,name="course"),
+    path("blog/", blog , name="blog"),
+    path("article/<adad>", atricle , name="atricle"),
     path("login/",login, name="login"),  
     path("logout/",logout, name="logout"), 
-    path("category/", category),
-    path("contact_us/", contact_us),
-    path("news/", news),
+    path("category/", category , name="category"),
+    path("contactus/", contactus , name="contactus"),
     path("signup/", signup, name="signup"),
     path("paneluser/",paneluser, name="paneluser"),
     path("dashboard/",dashboard, name="dashboard"),
-    path("search/",search), 
-    path("teach/",teach),
-    path("error404/",error404),
-    
+    path("search/",search , name="search"), 
+    path("teach/",teach , name="teach"),
+    path("forgetpassword/", forgetpassword, name="forgetpassword"),
+    path("passwordreset/<uidb64>/<token>/", passwordreset, name="passwordreset"),
+    path("addcart/<pid>",addcart , name="addcart"),
+    path("deletecart/<itmid>", deletecart, name="deletecart"),
+     path("samplequestion/", samplequestion , name="samplequestion")
+
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

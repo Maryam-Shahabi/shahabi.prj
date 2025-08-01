@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    {%load static%}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ورود</title>
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/bootstrap/bootstrap-rtl.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/customcss/style.css">
-    <link rel="stylesheet" href="{%static 'main_app/'%}css/fontawesome/css/all.css">
-</head>
-<body>
+{%extends "main_app/layout.html"%}
+{%load static%}
+{%block 'vasat'%}
     <div class="container"><!----- Start login box ----->
         <div class="row d-flex justify-content-center">
 
@@ -20,7 +10,7 @@
 
                     <div class="card-body">
                         <h5 class="shadow-sm text-center mb-4 py-3">ورود به سایت</h5>
-
+ 
                         {% if messages %}
                         <ul>
                         {% for message in messages %}
@@ -59,7 +49,7 @@
 
                             <button type="submit" class="btn btn-primary btn-block rounded-pill custom-btn font-13 my-3">ورود </button>
                             
-                            <p class="text-center my-3  font-12 vazir">رمز عبور خود را فراموش کرده اید؟ <a href="/forget-password" class="login">بازیابی رمز عبور</a></p>
+                            <p class="text-center my-3  font-12 vazir">رمز عبور خود را فراموش کرده اید؟ <a href="{% url 'forgetpassword' %}" class="login">بازیابی رمز عبور</a></p>
                             
                             <p class="text-center my-3  font-12 vazir">هنوز در سایت ثبت نام نکرده اید ؟ <a href="{% url 'signup'%}" class="login">ثبت نام</a></p>
 
@@ -73,10 +63,26 @@
         {{fname}}
     </div><!----- End login box ----->
 
+{%endblock%}
 
-    <script src="{%static 'main_app/'%}js/jquery-3.3.1.min.js"></script>
-    <script src="{%static 'main_app/'%}js/popper.min.js"></script>
-    <script src="{%static 'main_app/'%}js/bootstrap.min.js"></script>
-    <script src="{%static 'main_app/'%}js/myscript.js"></script>
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
